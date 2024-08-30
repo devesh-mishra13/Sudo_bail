@@ -1,0 +1,69 @@
+.footer {
+    width: 100%;
+    background-color: #161818; /* Updated background color */
+    color: #ffffff; /* Ensures text is readable on dark background */
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .contact, .address, .getInTouch, .social {
+    margin-bottom: 20px;
+  }
+  
+  .contact h2, .address h3, .getInTouch h3, .social h3 {
+    margin-bottom: 10px;
+  }
+  
+  .contactInfo a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ffffff; /* White text color for links */
+  }
+  
+  .contactInfo a:hover {
+    text-decoration: underline;
+  }
+  
+  .address p, .getInTouch p {
+    margin: 5px 0;
+  }
+  
+  .socialLinks a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ffffff; /* White text color for social links */
+  }
+  
+  .socialLinks a:hover {
+    color: #007bff; /* Highlight color for social links */
+  }
+  
+  .footerBottom {
+    background-color: #121212; /* Slightly darker background for the bottom section */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footerBottom p {
+    margin: 5px 0;
+  }
+  
+  .footerBottom a {
+    text-decoration: none;
+    color: #007bff; /* Color for terms link */
+  }
+  
+  .footerBottom a:hover {
+    text-decoration: underline;
+  }
+  

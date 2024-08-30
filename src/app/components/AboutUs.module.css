@@ -1,0 +1,133 @@
+/* components/AboutUs.module.css */
+
+.aboutUsContainer {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 70%;
+  padding: 0px 100px 100px 100px;
+}
+
+.aboutUsText {
+  font-family: 'Romulo Light';
+  font-size: 44px;
+  margin-bottom: 100px; /* Remove margin */
+  margin-left: 10px;
+}
+
+.line {
+  display: block;
+}
+
+.aboutUsButton {
+  padding: 20px 40px;
+  border-radius: 50px;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  cursor: pointer;
+  font-size: 24px;
+  transition: all 0.3s ease; /* Smooth transition for color and background change */
+  margin-left: 10px;
+}
+
+.bottomContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative; /* Position relative to allow absolute positioning of children */
+}
+
+.bottomLine {
+  width: 80%;
+  height: 1px;
+  background-color: black;
+  position: absolute;
+  bottom: 50px; /* Position it at the bottom of the parent container */
+  left: 200px;
+}
+
+.latestWorkText {
+  font-family: 'Romulo Light';
+  text-align: right;
+  position: absolute; /* Position it absolutely relative to the parent */
+  right: 150px;
+  bottom: 70px; /* Align it just above the bottom line */
+}
+
+@media(max-width:787px){
+  /* components/AboutUs.module.css */
+
+.aboutUsContainer {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 70%;
+  /* padding: 0px 100px 100px 100px; */
+}
+
+.aboutUsText {
+  font-family: 'Romulo Light';
+  font-size: 24px;
+  margin-bottom: 25px; /* Remove margin */
+  margin-left: -78px;
+}
+
+.line {
+  display: block;
+}
+
+.aboutUsButton {
+  padding: 5px 10px;
+  border-radius: 50px;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s ease; /* Smooth transition for color and background change */
+  margin-left: -80px;
+}
+
+.bottomContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative; /* Position relative to allow absolute positioning of children */
+}
+
+.bottomLine {
+  width: 80%;
+  height: 1px;
+  background-color: black;
+  position: absolute;
+  bottom: 100px; /* Position it at the bottom of the parent container */
+  left: 30px;
+}
+
+.latestWorkText {
+  font-family: 'Romulo Light';
+  text-align: right;
+  position: absolute; /* Position it absolutely relative to the parent */
+  right: 305px;
+  bottom: 100px; /* Align it just above the bottom line */
+}
+}

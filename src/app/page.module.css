@@ -1,0 +1,437 @@
+/* Ensure container takes full viewport height */
+.container {
+  position: relative;
+  overflow: hidden; /* Ensure no scrollbars appear */
+}
+
+@keyframes rotateBackground3D {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.rotatingBackgroundImage {
+  position: fixed;
+  top: 26%;
+  left: 37%;
+  width: 65vw;
+  height: 65vw;
+  max-width: 500px;
+  max-height: 500px;
+  transform: translate(-50%, -50%);
+  animation: rotateBackground3D 20s linear infinite;
+  opacity: 0.2; /* Adjust opacity for a subtle effect */
+  pointer-events: none; /* Ensure it doesn't interfere with other elements */
+  transform-style: preserve-3d; /* Ensure 3D transformations are preserved */
+  /* z-index: -1; */
+}
+.canvasContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Put the canvas behind other elements */
+}
+
+.headlineText {
+  position: relative;
+  z-index: 1; /* Ensure the text is above the canvas */
+  /* Add other styles as needed */
+}
+
+/* Headline text styles */
+.headlineText {
+  font-family: 'Sequel Sans Display', sans-serif;
+  font-size: 25vh;  /* 50% of viewport height */
+  text-align: center;
+  margin-top: 20vh;  /* Adjust as necessary */
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px; /* Adjust padding */
+  height: 10vh; /* Adjust height */
+  background-color: transparent; /* Background color of the navbar */
+  position: fixed; /* Fixed position to stay at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2; /* Ensure navbar is above other content */
+}
+
+/* Navbar brand styles */
+.navbarLeft {
+  display: flex;
+  align-items: center;
+}
+
+.navbarBrand {
+  height: 85px; /* Adjust height based on the logo size */
+  margin-top: 25px;
+}
+
+.navbarBrand img {
+  height: 100%; /* Ensure logo fits the navbar height */
+  width: auto; /* Maintain aspect ratio */
+}
+
+/* Plus line styles */
+.navbarCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px; /* Space from the top of the navbar */
+  position: relative; /* Position relative for absolute positioning of plus sign */
+  cursor: pointer; /* Cursor change on hover */
+}
+
+/* Plus line container */
+.plusLine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Position relative for animation */
+}
+
+/* Plus line styles */
+.plusHorizontal,
+.plusVertical {
+  background-color: grey; /* Initial color of the plus line */
+  transition: background-color 0.3s; /* Smooth transition for color change */
+  position: absolute;
+}
+
+.plusHorizontal {
+  width: 100px; /* Increased width of the horizontal line */
+  height: 2px; /* Thin thickness of the horizontal line */
+  top: 50%; /* Center the horizontal line vertically */
+  transform: translateY(-50%); /* Adjust for vertical centering */
+}
+
+.plusVertical {
+  width: 2px; /* Thin thickness of the vertical line */
+  height: 100px; /* Increased height of the vertical line */
+}
+
+/* Keyframes for hover animation */
+@keyframes colorFlowHorizontal {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes colorFlowVertical {
+  0% {
+    background-position: 0 -100%;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+/* Change color on hover with animation */
+.navbarCenter:hover .plusHorizontal {
+  background: linear-gradient(to right, black, black 50%, grey 50%, grey 100%);
+  background-size: 200% 100%;
+  animation: colorFlowHorizontal 0.5s forwards;
+}
+
+.navbarCenter:hover .plusVertical {
+  background: linear-gradient(to bottom, black, black 50%, grey 50%, grey 100%);
+  background-size: 100% 200%;
+  animation: colorFlowVertical 0.5s forwards;
+}
+
+.navbarRight {
+  font-family: 'Sequel Sans Display', sans-serif; /* Ensure font is loaded */
+  font-size: 32px; /* Adjust font size */
+  font-weight: bold;
+  color: #333; /* Dark color for better visibility */
+  cursor: pointer;
+}
+
+/* Full-screen overlay styles */
+.fullscreenNavbar {
+  position: fixed; /* Fixed position to cover the entire viewport */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full width */
+  height: 100vh; /* Full height */
+  background-color: #b86136; /* Background color */
+  transform: translateY(-100%); /* Start off-screen */
+  transition: transform 0.5s ease; /* Smooth transition */
+  z-index: 3; /* Ensure it's above other content */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Full-screen navbar open styles */
+.fullscreenNavbar.open {
+  transform: translateY(0); /* Move into view */
+}
+
+/* Top navbar styles */
+.topNavbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 50px 0px 50px;
+  background-color: #b86136; /* Shutter color */
+  font-family: 'Sequel Sans Display', sans-serif; /* Ensure font is loaded */
+}
+
+.topNavbarLeft {
+  height: 100px; /* Adjust height based on the logo size */
+}
+
+.topNavbarLeft img {
+  height: 100%; /* Ensure logo fits the top navbar height */
+  width: auto; /* Maintain aspect ratio */
+}
+
+.topNavbarRight {
+  font-size: 28px; /* Adjust font size */
+  color: #000; /* Light color for visibility */
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+/* Full-screen content styles */
+.fullscreenContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+  justify-content: flex-start; /* Align items to the top */
+  flex: 1;
+  font-family: 'Aficial Neue', sans-serif; /* Font for menu items */
+  color: #fff; /* Text color */
+  padding: 0px 350px; /* Padding to align content */
+  box-sizing: border-box; /* Include padding in width */
+  margin-top: 0; /* Remove top margin to align directly below top navbar */
+}
+
+/* Menu items in fullscreen content */
+.fullscreenContent p {
+  font-size: 100px; /* Adjust font size */
+  margin: -15px 0; /* Space between items */
+  color: black; /* Default color for non-active items */
+  transition: color 0.3s, background-color 0.3s; /* Smooth transitions */
+}
+
+/* Active menu item */
+.fullscreenContent .active {
+  color: white; /* Color for the active page */
+}
+
+/* Hover animation for menu items */
+.fullscreenContent p:hover {
+  background: linear-gradient(to right, black, black 50%, grey 50%, grey 100%);
+  -webkit-background-clip: text; /* Clip background to text */
+  color: transparent; /* Hide text color */
+  background-size: 200% 100%;
+  animation: colorFlowHorizontal 0.5s forwards; /* Horizontal gradient animation */
+}
+
+@media(max-width:787px){
+    /* Navbar styles */
+    .rotatingBackgroundImage {
+      position: fixed;
+      top: 26%;
+      left: 12%;
+      width: 80vw;
+      height: 65vh;
+      max-width: 500px;
+      max-height: 500px;
+      transform: translate(-50%, -50%);
+      animation: rotateBackground3D 20s linear infinite;
+      opacity: 0.2; /* Adjust opacity for a subtle effect */
+      pointer-events: none; /* Ensure it doesn't interfere with other elements */
+      transform-style: preserve-3d; /* Ensure 3D transformations are preserved */
+      /* z-index: -1; */
+    }
+    .headlineText {
+      position: relative;
+      z-index: 1; /* Ensure the text is above the canvas */
+      /* Add other styles as needed */
+    }
+    
+    /* Headline text styles */
+    .headlineText {
+      font-family: 'Sequel Sans Display', sans-serif;
+      font-size: 10vh;  /* 50% of viewport height */
+      text-align: center;
+      margin-top: 20vh;  /* Adjust as necessary */
+      margin-bottom: 40vh;
+    }
+    
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px; /* Adjust padding */
+  height: 10vh; /* Adjust height */
+  background-color: transparent; /* Background color of the navbar */
+  position: fixed; /* Fixed position to stay at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2; /* Ensure navbar is above other content */
+}
+
+/* Navbar brand styles */
+.navbarLeft {
+  display: flex;
+  align-items: center;
+}
+
+.navbarBrand {
+  height: 65px; /* Adjust height based on the logo size */
+  margin-top: 25px;
+}
+
+.navbarBrand img {
+  height: 100%; /* Ensure logo fits the navbar height */
+  width: auto; /* Maintain aspect ratio */
+}
+
+/* Plus line styles */
+.navbarCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px; /* Space from the top of the navbar */
+  position: relative; /* Position relative for absolute positioning of plus sign */
+  cursor: pointer; /* Cursor change on hover */
+}
+/* Plus line container */
+.plusLine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Position relative for animation */
+}
+
+/* Plus line styles */
+.plusHorizontal,
+.plusVertical {
+  background-color: grey; /* Initial color of the plus line */
+  transition: background-color 0.3s; /* Smooth transition for color change */
+  position: absolute;
+}
+
+.plusHorizontal {
+  width: 70px; /* Increased width of the horizontal line */
+  height: 2px; /* Thin thickness of the horizontal line */
+  top: 50%; /* Center the horizontal line vertically */
+  transform: translateY(-50%); /* Adjust for vertical centering */
+}
+
+.plusVertical {
+  width: 2px; /* Thin thickness of the vertical line */
+  height: 70px; /* Increased height of the vertical line */
+}
+.navbarRight {
+  font-family: 'Sequel Sans Display', sans-serif; /* Ensure font is loaded */
+  font-size: 25px; /* Adjust font size */
+  font-weight: bold;
+  color: #333; /* Dark color for better visibility */
+  cursor: pointer;
+}
+
+}
+
+@media(max-width:787px){
+/* Full-screen overlay styles */
+.fullscreenNavbar {
+  position: fixed; /* Fixed position to cover the entire viewport */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full width */
+  height: 100vh; /* Full height */
+  background-color: #b86136; /* Background color */
+  transform: translateY(-100%); /* Start off-screen */
+  transition: transform 0.5s ease; /* Smooth transition */
+  z-index: 3; /* Ensure it's above other content */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Full-screen navbar open styles */
+.fullscreenNavbar.open {
+  transform: translateY(0); /* Move into view */
+}
+
+/* Top navbar styles */
+.topNavbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 50px 0px 50px;
+  background-color: #b86136; /* Shutter color */
+  font-family: 'Sequel Sans Display', sans-serif; /* Ensure font is loaded */
+}
+
+.topNavbarLeft {
+  height: 85px; /* Adjust height based on the logo size */
+}
+
+.topNavbarLeft img {
+  height: 100%; /* Ensure logo fits the top navbar height */
+  width: auto; /* Maintain aspect ratio */
+}
+
+.topNavbarRight {
+  font-size: 24px; /* Adjust font size */
+  color: #000; /* Light color for visibility */
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+/* Full-screen content styles */
+.fullscreenContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+  justify-content: flex-start; /* Align items to the top */
+  flex: 1;
+  font-family: 'Aficial Neue', sans-serif; /* Font for menu items */
+  color: #fff; /* Text color */
+  box-sizing: border-box; /* Include padding in width */
+  margin-top: 0; /* Remove top margin to align directly below top navbar */
+}
+
+/* Menu items in fullscreen content */
+.fullscreenContent p {
+  font-size: 55px; /* Adjust font size */
+  margin: -8px 0; /* Space between items */
+  margin-left: -325px;
+  color: black; /* Default color for non-active items */
+  transition: color 0.3s, background-color 0.3s; /* Smooth transitions */
+}
+
+/* Active menu item */
+.fullscreenContent .active {
+  color: white; /* Color for the active page */
+}
+
+/* Hover animation for menu items */
+.fullscreenContent p:hover {
+  background: linear-gradient(to right, black, black 50%, grey 50%, grey 100%);
+  -webkit-background-clip: text; /* Clip background to text */
+  color: transparent; /* Hide text color */
+  background-size: 200% 100%;
+  animation: colorFlowHorizontal 0.5s forwards; /* Horizontal gradient animation */
+}
+}

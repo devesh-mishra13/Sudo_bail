@@ -1,113 +1,160 @@
-import Image from "next/image";
+'use client';
+
+import React, { useEffect, useState, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { useScroll, useTransform } from 'framer-motion';
+import Footer from './components/ShutterFooter';
+import Image from 'next/image';
+import styles from './page.module.css'; // Import the CSS file
+import { Canvas, useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
+import AboutUs from './components/AboutUs';
+import Section from './components/Section';
+import BottomFooter from './components/Footer';
+
+
+type PageName = 'HOME' | 'SERVICES' | 'WORKFLOW' | 'CONTACT' | 'ABOUT'; // Define a type for page names
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+  const [isClient, setIsClient] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(false);
+  const [showFullscreenNavbar, setShowFullscreenNavbar] = useState(false);
+  const [showContent, setShowContent] = useState(false);
+  const [activePage, setActivePage] = useState<PageName>('HOME'); // Use PageName type
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+  useEffect(() => {
+    setIsClient(true);
+    const timer = setTimeout(() => {
+      setShowNavbar(true);
+    }, 1000); // Duration should match the animation duration
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const toggleFullscreenNavbar = () => {
+    setShowFullscreenNavbar(prev => !prev);
+    setShowContent(prev => !prev);
+  };
+
+  const handleNavClick = (page: PageName) => { // Explicitly type the page parameter
+    setActivePage(page); // Set the active page
+  };
+  const { scrollYProgress } = useScroll();
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
+
+  return (
+    <div className={styles.container}>
+        <div className={styles.rotatingBackgroundImage}>
+        <Image 
+          src="/AIL3.png"  
+          alt="Rotating Background" 
+          layout="fill" 
+          objectFit="contain"
         />
       </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      {isClient && (
+        <>
+          <motion.p
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        style={{ x }} 
+        transition={{ duration: 1.5, ease: 'easeOut' }}
+        className={styles.headlineText}
+      >
+        Bail<br /> Reckøner
+      </motion.p>
+          {showNavbar && (
+            <>
+              <nav className={styles.navbar}>
+                <div className={styles.navbarLeft}>
+                  <div className={styles.navbarBrand}>
+                    <img src="./AIL2.png" alt="Bail Reckoner" />
+                  </div>
+                </div>
+                <div className={styles.navbarCenter} onClick={toggleFullscreenNavbar}>
+                  <div className={styles.plusLine}>
+                    <div className={styles.plusHorizontal}></div>
+                    <div className={styles.plusVertical}></div>
+                  </div>
+                </div>
+                <div className={styles.navbarRight} onClick={toggleFullscreenNavbar}>
+                  Menu
+                </div>
+              </nav>
+              <motion.div
+                className={`${styles.fullscreenNavbar} ${showFullscreenNavbar ? styles.open : ''}`}
+                animate={{ y: showFullscreenNavbar ? 0 : '100%' }}
+                initial={{ y: '-100%' }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                style={{ display: showFullscreenNavbar ? 'flex' : 'none' }}
+              >
+                <motion.div
+                  className={`${styles.topNavbar} ${showFullscreenNavbar ? styles.open : ''}`}
+                  animate={{ y: showFullscreenNavbar ? 0 : '-100%' }}
+                  initial={{ y: '-100%' }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                >
+                  <div className={styles.topNavbarLeft}>
+                    <img src="./AIL2.png" alt="Bail Reckoner" />
+                  </div>
+                  <div className={styles.topNavbarRight} onClick={toggleFullscreenNavbar}>
+                    <motion.div
+                      className={styles.closeButton}
+                      animate={{ scaleY: showFullscreenNavbar ? 1 : 0 }}
+                      transition={{ duration: 0.5, ease: 'easeInOut' }}
+                    >
+                      Close
+                    </motion.div>
+                  </div>
+                </motion.div>
+                <div className={`fullscreenNavbar ${showFullscreenNavbar ? 'open' : ''}`}>
+              <Footer onClose={toggleFullscreenNavbar} />
+              </div>
+                <motion.div
+                  className={styles.fullscreenContent}
+                  initial={{ opacity: 0, y: 100 }}
+                  animate={{ opacity: showContent ? 1 : 0, y: showContent ? 0 : 100 }}
+                  transition={{ duration: 1.5, ease: 'easeOut' }}
+                >
+                  <p
+                    className={`${styles.navItem} ${activePage === 'HOME' ? styles.active : ''}`}
+                    onClick={() => handleNavClick('HOME')}
+                  >
+                    HOME
+                  </p>
+                  <p
+                    className={`${styles.navItem} ${activePage === 'SERVICES' ? styles.active : ''}`}
+                    onClick={() => handleNavClick('SERVICES')}
+                  >
+                    SERVICES
+                  </p>
+                  <p
+                    className={`${styles.navItem} ${activePage === 'WORKFLOW' ? styles.active : ''}`}
+                    onClick={() => handleNavClick('WORKFLOW')}
+                  >
+                    WORKFLOW
+                  </p>
+                  <p
+                    className={`${styles.navItem} ${activePage === 'CONTACT' ? styles.active : ''}`}
+                    onClick={() => handleNavClick('CONTACT')}
+                  >
+                    CONTACT
+                  </p>
+                  <p
+                    className={`${styles.navItem} ${activePage === 'ABOUT' ? styles.active : ''}`}
+                    onClick={() => handleNavClick('ABOUT')}
+                  >
+                    ABOUT
+                  </p>
+                </motion.div>
+              </motion.div>
+            </>
+          )}
+        </>
+      )}
+      <AboutUs/>
+      <Section/>
+      <BottomFooter/>
+    </div>
   );
 }

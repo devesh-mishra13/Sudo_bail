@@ -1,0 +1,173 @@
+/* Add a new keyframe animation */
+@keyframes shutterClose {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20vh;
+    background-color: #b86136;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 40px;
+  }
+  
+  .footerLeft {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .crossLine {
+    position: relative;
+    width: 100px;
+    height: 30px;
+    margin-right: 10px;
+    animation: none; /* Initially no animation */
+  }
+  
+  .crossHorizontal,
+  .crossVertical {
+    position: absolute;
+    background-color: #000;
+    transition: background-color 0.3s;
+  }
+  
+  .crossHorizontal {
+    width: 100px;
+    height: 1px;
+    top: -50%;
+    left: 50px;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  
+  .crossVertical {
+    width: 100px;
+    height: 1px;
+    top: -30%;
+    left: 50px;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+  
+  .footerRight {
+    font-family: 'Sequel Sans Display', sans-serif;
+    font-size: 1.5rem;
+    font-weight: normal;
+    text-align: left;
+    margin-left: 25vh;
+    position: relative;
+    padding-bottom: 5px;
+  }
+  
+  .footerRight::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    transition: width 0.3s ease;
+  }
+  
+  .footerRight:hover::before {
+    width: 100%;
+  }
+  
+  /* Add animation when shutter is closing */
+  .close-animation .crossLine {
+    animation: shutterClose 0.5s forwards; /* Adjust the duration as needed */
+  }
+@media(max-width:787px){
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20vh;
+  background-color: #b86136;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 40px;
+}
+
+.footerLeft {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.crossLine {
+  position: relative;
+  width: 70px;
+  height: 30px;
+  margin-right: 10px;
+  animation: none; /* Initially no animation */
+}
+
+.crossHorizontal,
+.crossVertical {
+  position: absolute;
+  background-color: #000;
+  transition: background-color 0.3s;
+}
+
+.crossHorizontal {
+  width: 70px;
+  height: 1px;
+  top: -50%;
+  left: 10px;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.crossVertical {
+  width: 70px;
+  height: 1px;
+  top: -30%;
+  left: 10px;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.footerRight {
+  font-family: 'Sequel Sans Display', sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  text-align: left;
+  /* margin-left: 25vh; */
+  margin-left: 175px;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.footerRight::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  transition: width 0.3s ease;
+}
+
+.footerRight:hover::before {
+  width: 100%;
+}
+
+/* Add animation when shutter is closing */
+.close-animation .crossLine {
+  animation: shutterClose 0.5s forwards; /* Adjust the duration as needed */
+}
+}

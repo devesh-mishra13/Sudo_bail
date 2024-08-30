@@ -1,0 +1,236 @@
+.sectionContainer {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.selectContainer {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 300px;
+  z-index: 1;
+}
+
+.shuffledActsContainer {
+  display: flex;
+  position: absolute;
+  top: 80px;
+  left: 20px;
+  width: 300px;
+}
+
+.shuffledAct {
+  width: 100%;
+  margin-bottom: 10px;
+  margin-right: 15px;
+  font-size: 18px;
+  color: gray;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.shuffledAct:hover {
+  color: black;
+}
+
+.textContainerx {
+  width: 50%;
+  padding: 0px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.photoContainer {
+  width: 40%;
+  height: 40vw;
+  position: relative;
+  margin-right: 50px;
+}
+
+.photo {
+  width: 90%;
+  height: 80%;
+  object-fit: cover;
+}
+
+.topLeftText {
+  position: absolute;
+  top: -20px;
+  left: -80px;
+  font-size: 64px;
+  font-family: 'Romulo Light';
+}
+
+.bottomLeftContainer {
+  position: absolute;
+  bottom: 125px;
+  left: -450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ipcText {
+  font-size: 52px;
+  font-family: 'Romulo Light';
+}
+
+.bottomLine {
+  width: 80%;
+  height: 1px;
+  background-color: black;
+  position: absolute;
+  bottom: 70px;
+  left: 200px;
+}
+
+.aboutUsButton {
+  padding: 15px 30px;
+  border-radius: 50px;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  cursor: pointer;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.arrowButton {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  font-size: 36px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+@media(max-width:787px){
+  .sectionContainer {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  
+  .selectContainer {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 300px;
+    z-index: 1;
+  }
+  
+  .shuffledActsContainer {
+    display: flex;
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    width: 300px;
+  }
+  
+  .shuffledAct {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-right: 15px;
+    font-size: 18px;
+    color: gray;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .shuffledAct:hover {
+    color: black;
+  }
+  
+  .textContainerx {
+    width: 30%;
+    padding: 70px 57px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .photoContainer {
+    width: 40%;
+    height: 40vw;
+    position: relative;
+    /* margin-right: 50px; */
+    padding-top: 100px;
+    /* left: -100px */
+  }
+  
+  .photo {
+    width: 90%;
+    height: 80%;
+    object-fit: cover;
+  }
+  
+  .topLeftText {
+    padding-top: 100px;
+    position: absolute;
+    top: -20px;
+    left: -100px;
+    font-size: 20px;
+    font-family: 'Romulo Light';
+  }
+  
+  .bottomLeftContainer {
+    position: absolute;
+    bottom: -134px;
+    left: -217px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ipcText {
+    padding-top: 200px;
+    font-size: 24px;
+    font-family: 'Romulo Light';
+    margin-left: -40px;
+  }
+  
+  .bottomLine {
+    width: 80%;
+    height: 1px;
+    background-color: black;
+    position: absolute;
+    bottom: 150px;
+    left: 200px;
+  }
+  
+  .aboutUsButton {
+    padding: 10px 20px;
+    border-radius: 50px;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+  }
+  
+  .arrowButton {
+    position: absolute;
+    left: 20px;
+    top: 45%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  
+}
