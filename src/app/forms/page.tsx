@@ -3,12 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from '../components/FormPage.module.css';
 
+
 const FormPage: React.FC = () => {
   // State for form fields
   const [age, setAge] = useState('');
   const [gender, setGender] = useState('');
   const [incidentBrief, setIncidentBrief] = useState('');
   const [previousBail, setPreviousBail] = useState('');
+  const [bailOutcome, setBailOutcome] = useState(''); // For "If Allowed" or "If Not Allowed"
   const [allowedTerms, setAllowedTerms] = useState('');
   const [groundsRejection, setGroundsRejection] = useState('');
   const [courtName, setCourtName] = useState('');
@@ -47,8 +49,9 @@ const FormPage: React.FC = () => {
       },
       bail_application_history: {
         "Any previous bail application?": previousBail === 'Yes',
-        "Terms & Conditions": allowedTerms,
-        "Grounds for Rejection": groundsRejection,
+        "Outcome": bailOutcome,
+        "Terms & Conditions": bailOutcome === 'Allowed' ? allowedTerms : '',
+        "Grounds for Rejection": bailOutcome === 'Not Allowed' ? groundsRejection : '',
         "Court where the application was decided": courtName
       },
       criminal_history: {
@@ -152,36 +155,45 @@ const FormPage: React.FC = () => {
             {previousBail === 'Yes' && (
               <>
                 <label className={styles.label}>
-                  If Allowed:
-                  <input
-                    type="text"
-                    value={allowedTerms}
-                    onChange={(e) => setAllowedTerms(e.target.value)}
-                    className={styles.input}
-                  />
+                  Outcome:
+                  <select
+                    value={bailOutcome}
+                    onChange={(e) => setBailOutcome(e.target.value)}
+                    required
+                    className={styles.select}
+                  >
+                    <option value="">Select</option>
+                    <option value="Allowed">If Allowed</option>
+                    <option value="Not Allowed">If Not Allowed</option>
+                  </select>
                 </label>
-                <label className={styles.label}>
-                  Terms & Conditions:
-                  <textarea
-                    value={allowedTerms}
-                    onChange={(e) => setAllowedTerms(e.target.value)}
-                    className={styles.textarea}
-                  />
-                </label>
-                <label className={styles.label}>
-                  If Not:
-                  <textarea
-                    value={groundsRejection}
-                    onChange={(e) => setGroundsRejection(e.target.value)}
-                    className={styles.textarea}
-                  />
-                </label>
+                {bailOutcome === 'Allowed' && (
+                  <label className={styles.label}>
+                    Terms & Conditions:
+                    <textarea
+                      value={allowedTerms}
+                      onChange={(e) => setAllowedTerms(e.target.value)}
+                      className={styles.textarea}
+                    />
+                  </label>
+                )}
+                {bailOutcome === 'Not Allowed' && (
+                  <label className={styles.label}>
+                    Grounds for Rejection:
+                    <textarea
+                      value={groundsRejection}
+                      onChange={(e) => setGroundsRejection(e.target.value)}
+                      className={styles.textarea}
+                    />
+                  </label>
+                )}
                 <label className={styles.label}>
                   Court where the application was decided:
                   <input
                     type="text"
                     value={courtName}
                     onChange={(e) => setCourtName(e.target.value)}
+                    required
                     className={styles.input}
                   />
                 </label>

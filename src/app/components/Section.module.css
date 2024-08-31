@@ -1,83 +1,120 @@
 .sectionContainer {
   width: 100vw;
-  height: 80vh;
+  height: 110vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   position: relative;
+  overflow: hidden; /* Ensure no overflow issues */
 }
 
 .selectContainer {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 44%;
+  right: 10%;
   width: 300px;
   z-index: 1;
 }
 
-.shuffledActsContainer {
+.rectangleContainer {
   display: flex;
-  position: absolute;
-  top: 80px;
-  left: 20px;
-  width: 300px;
+  align-items: center;
+  justify-content: center;
+  width: 60%; /* Adjusted to fit more space */
+  height: 70%; /* Adjusted to fit more space */
+  border-radius: 10px; /* Changed to rectangle with rounded corners */
+  border: 2px solid #000;
+  padding: 30px; /* Increased padding for spacing */
+  position: relative;
 }
 
-.shuffledAct {
+.cardsInnerContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   width: 100%;
-  margin-bottom: 10px;
-  margin-right: 15px;
-  font-size: 18px;
-  color: gray;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px; /* Adjusted for a more rectangular look */
+  padding: 20px;
+  width: 200px; /* Increased width */
+  height: 100px; /* Increased height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  position: relative;
 }
 
-.shuffledAct:hover {
-  color: black;
+.card:hover {
+  background-color: #e0e0e0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
 }
 
-.textContainerx {
-  width: 50%;
-  padding: 0px 100px;
+.cardText {
+  font-size: 18px; /* Increased font size */
+  font-weight: 500;
+}
+
+.textContainer {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  padding-left: -25px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-.photoContainer {
-  width: 40%;
-  height: 40vw;
-  position: relative;
-  margin-right: 50px;
-}
-
-.photo {
-  width: 90%;
-  height: 80%;
-  object-fit: cover;
-}
-
-.topLeftText {
-  position: absolute;
-  top: -20px;
-  left: -80px;
-  font-size: 64px;
-  font-family: 'Romulo Light';
+.bottomc {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .bottomLeftContainer {
   position: absolute;
-  bottom: 125px;
-  left: -450px;
   display: flex;
   flex-direction: column;
+  height: auto;
+  margin-left: 25px;
+  top: 50%;
 }
 
 .ipcText {
-  font-size: 52px;
+  font-size: 32px;
   font-family: 'Romulo Light';
+  height: 100%;
+  width: 100%;
+}
+
+.checkBailButton {
+  margin-top: 20px; /* Space between ipcText and button */
+  padding: 10px 20px;
+  background-color: #007BFF; /* Bootstrap primary color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.checkBailButton:hover {
+  background-color: #0056b3; /* Darker shade for hover */
+  transform: scale(1.05);
 }
 
 .bottomLine {
@@ -86,151 +123,29 @@
   background-color: black;
   position: absolute;
   bottom: 70px;
-  left: 200px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.aboutUsButton {
-  padding: 15px 30px;
+.aboutUsButton1 {
+  padding: 10px 20px;
   border-radius: 50px;
   background-color: white;
   color: black;
   border: 2px solid black;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 18px;
   transition: all 0.3s ease;
 }
 
 .arrowButton {
   position: absolute;
   left: 20px;
-  top: 50%;
+  top: 45%;
   transform: translateY(-50%);
   background-color: transparent;
   border: none;
-  font-size: 36px;
+  font-size: 24px;
   cursor: pointer;
   z-index: 1;
-}
-
-@media(max-width:787px){
-  .sectionContainer {
-    width: 100vw;
-    height: 80vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-  }
-  
-  .selectContainer {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 300px;
-    z-index: 1;
-  }
-  
-  .shuffledActsContainer {
-    display: flex;
-    position: absolute;
-    top: 80px;
-    left: 20px;
-    width: 300px;
-  }
-  
-  .shuffledAct {
-    width: 100%;
-    margin-bottom: 10px;
-    margin-right: 15px;
-    font-size: 18px;
-    color: gray;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .shuffledAct:hover {
-    color: black;
-  }
-  
-  .textContainerx {
-    width: 30%;
-    padding: 70px 57px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  
-  .photoContainer {
-    width: 40%;
-    height: 40vw;
-    position: relative;
-    /* margin-right: 50px; */
-    padding-top: 100px;
-    /* left: -100px */
-  }
-  
-  .photo {
-    width: 90%;
-    height: 80%;
-    object-fit: cover;
-  }
-  
-  .topLeftText {
-    padding-top: 100px;
-    position: absolute;
-    top: -20px;
-    left: -100px;
-    font-size: 20px;
-    font-family: 'Romulo Light';
-  }
-  
-  .bottomLeftContainer {
-    position: absolute;
-    bottom: -134px;
-    left: -217px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .ipcText {
-    padding-top: 200px;
-    font-size: 24px;
-    font-family: 'Romulo Light';
-    margin-left: -40px;
-  }
-  
-  .bottomLine {
-    width: 80%;
-    height: 1px;
-    background-color: black;
-    position: absolute;
-    bottom: 150px;
-    left: 200px;
-  }
-  
-  .aboutUsButton {
-    padding: 10px 20px;
-    border-radius: 50px;
-    background-color: white;
-    color: black;
-    border: 2px solid black;
-    cursor: pointer;
-    font-size: 18px;
-    transition: all 0.3s ease;
-  }
-  
-  .arrowButton {
-    position: absolute;
-    left: 20px;
-    top: 45%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1;
-  }
-  
-  
 }
