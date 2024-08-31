@@ -71,12 +71,12 @@ export default function Home() {
                     <img src="./AIL2.png" alt="Bail Reckoner" />
                   </div>
                 </div>
-                <div className={styles.navbarCenter} onClick={toggleFullscreenNavbar}>
+                {/* <div className={styles.navbarCenter} onClick={toggleFullscreenNavbar}>
                   <div className={styles.plusLine}>
                     <div className={styles.plusHorizontal}></div>
                     <div className={styles.plusVertical}></div>
                   </div>
-                </div>
+                </div> */}
                 <div className={styles.navbarRight} onClick={toggleFullscreenNavbar}>
                   Menu
                 </div>
