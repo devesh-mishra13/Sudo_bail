@@ -118,7 +118,7 @@ const FormPage: React.FC = () => {
     }
   
     try {
-      const response = await fetch('http://192.168.2.130:8080/submit_bail_application/', {
+      const response = await fetch('https://54.211.238.230:8080/submit_bail_application/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
