@@ -65,7 +65,7 @@
   min-height: 120px; /* Minimum height for textarea */
 }
 
-.submitButton, .nextButton, .previousButton {
+.submitButton, .nextButton, .prevButton {
   padding: 14px 24px; /* Padding inside buttons */
   margin-top: 24px; /* Spacing above buttons */
   border: none;
@@ -95,7 +95,7 @@
   background-color: #333333; /* Darker gray on hover */
 }
 
-.previousButton {
+.prevButton {
   background-color: #000000; /* Black background */
 }
 
