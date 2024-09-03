@@ -21,12 +21,68 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60%; /* Adjusted to fit more space */
+  width: 70%; /* Adjusted to fit more space */
   height: 70%; /* Adjusted to fit more space */
   border-radius: 10px; /* Changed to rectangle with rounded corners */
   border: 2px solid #000;
   padding: 30px; /* Increased padding for spacing */
   position: relative;
+  overflow: hidden;
+}
+.pdfContainer {
+  position: fixed; /* Overlay the iframe over the content */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the iframe */
+  width: 80%; /* Adjust as needed */
+  height: 80vh; /* Adjust as needed */
+  opacity: 0;
+  z-index: 1000; /* Ensure it's on top of other content */
+  animation: fadeIn 0.5s forwards; /* Adjust the duration as needed */
+  background: rgba(0, 0, 0, 0.5); /* Optional: darken background */
+  padding: 20px; /* Optional: add some padding around the iframe */
+  border-radius: 8px; /* Optional: add rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Optional: add shadow for depth */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%); /* Start slightly off-center */
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s;
+}
+
+.closeButton:hover {
+  background-color: #f0f0f0;
+}
+
+.pdfContainer-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 .cardsInnerContainer {
@@ -37,12 +93,15 @@
   height: 100%;
   align-items: center;
   justify-content: center;
+  overflow-y: auto; /* Enables vertical scrolling */
+  padding-right: 15px; /* Adds space for scrollbar */
 }
 
 .card {
   background-color: #fff;
+  border: 1px solid black;
   border-radius: 8px; /* Adjusted for a more rectangular look */
-  padding: 20px;
+  padding: 10px;
   width: 200px; /* Increased width */
   height: 100px; /* Increased height */
   display: flex;
@@ -60,8 +119,8 @@
 }
 
 .cardText {
-  font-size: 18px; /* Increased font size */
-  font-weight: 500;
+  font-size: 16px; /* Increased font size */
+  font-weight: 250;
 }
 
 .textContainer {
@@ -148,4 +207,62 @@
   font-size: 24px;
   cursor: pointer;
   z-index: 1;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .sectionContainer {
+    flex-direction: column;
+    height: 75vh;
+    margin-bottom: 200px;
+  }
+
+  .rectangleContainer {
+    width: 90%; /* Make the rectangleContainer wider for mobile */
+    height: 50%; /* Allow height to adjust based on content */
+    margin-bottom: 20px; /* Add space below the rectangleContainer */
+    position: relative;
+    overflow: hidden;
+  }
+
+  .selectContainer {
+    position: absolute;
+    top: 67%;
+    right: 16%;
+    width: 300px;
+    z-index: 1;
+  }
+
+  .cardsInnerContainer{
+    display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto; /* Enables vertical scrolling */
+  padding-right: 15px; /* Adds space for scrollbar */
+  }
+  .bottomc {
+    width: 90%; /* Adjust width for mobile */
+    height: auto; /* Allow height to adjust based on content */
+    margin-top: 20px; /* Add space above the bottom section */
+    margin-bottom: 25px;
+  }
+  
+  .bottomLeftContainer {
+    position: relative; /* Remove absolute positioning for mobile */
+    margin-left: 0; /* Remove left margin */
+    top: auto; /* Reset top position */
+  }
+  .bottomLine {
+    width: 80%;
+    height: 1px;
+    background-color: black;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
