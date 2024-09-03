@@ -127,7 +127,7 @@
   font-family: 'Romulo Light';
   text-align: right;
   position: absolute; /* Position it absolutely relative to the parent */
-  right: 305px;
+  right: 75px;
   bottom: 100px; /* Align it just above the bottom line */
 }
 }
