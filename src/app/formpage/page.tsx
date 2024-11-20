@@ -178,7 +178,7 @@ const FormPage: React.FC = () => {
                     isMulti
                     options={options}
                     value={prevsectionsOffense}
-                    onChange={setPrevSectionsOffense}
+                    // onChange={setPrevSectionsOffense}
                     className={styles.formSelect}
                   />
                 </label>
