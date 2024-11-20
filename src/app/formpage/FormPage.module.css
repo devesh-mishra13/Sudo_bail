@@ -1,0 +1,133 @@
+.formPageWrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    background-color: #f9f9f9;
+    height: 100vh;
+  }
+  
+  .formContainer {
+    width: 58%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    display: grid; /* Use grid layout */
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    grid-gap: 30px; /* Space between sections */
+  }
+  .imageContainer {
+    display: flex;
+    position: relative;
+    top: 35%;
+    left: 80%;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .centeredImage {
+    width: 150px; /* Adjust as needed */
+    height: 150px;
+  }
+  .outputContainer {
+    width: 38%;
+    background-color: #e9ecef;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    display: none;
+    line-height: 1.6; /* Increases line spacing for better readability */
+    font-size: 16px; /* Adjusts font size for clarity */
+  }
+  
+  .outputContainer.visible {
+    display: block;
+  }
+  
+  .formInput:focus, 
+  .formTextarea:focus, 
+  .formSelect:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  .form {
+    display: contents;
+    flex-direction: column;
+    gap: 30px; /* Adds spacing between form sections */
+  }
+  
+  .section {
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    height: 400px;
+    width: 80%; /* Adjust to take full width in grid */
+  }
+  
+  .formLabel {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  
+  .formInput, .formTextarea, .formSelect {
+    padding: 12px;
+    font-size: 16px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 80%; /* Full width within label */
+  }
+  
+  .formTextarea {
+    min-height: 120px;
+  }
+  
+  .selectContainer {
+    margin-top: 10px;
+  }
+  
+  .buttonGroup {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .submitButton {
+    width: 50%;
+    background-color: #007bff;
+    height: 50%;
+    color: white;
+    padding: 14px;
+    border: none;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submitButton:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 768px) {
+    .formPageWrapper {
+      flex-direction: column;
+    }
+  
+    .formContainer, .outputContainer {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .submitButton {
+      width: 100%;
+    }
+  }
+  
